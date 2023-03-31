@@ -41,6 +41,7 @@ public class Client {
 	@Column(name = "gender")
 	private String gender;
 
+	//Getters and Setters --->
 	public Long getId() {
 		return id;
 	}
