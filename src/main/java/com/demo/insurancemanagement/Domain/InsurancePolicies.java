@@ -17,7 +17,7 @@ public class InsurancePolicies {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "policyId")
-    private Long id;
+    private Long policyId;
 	
 	@Column(name = "policyType")
 	private String policyType;
@@ -36,12 +36,12 @@ public class InsurancePolicies {
 
 	//Getters and Setters --- >
 	
-	public Long getId() {
-		return id;
+	public Long getPolicyId() {
+		return policyId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setPolicyId(Long policyId) {
+		this.policyId = policyId;
 	}
 
 	public String getPolicyType() {
