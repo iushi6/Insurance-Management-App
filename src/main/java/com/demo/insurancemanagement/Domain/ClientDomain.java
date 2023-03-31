@@ -35,6 +35,11 @@ public class ClientDomain {
 	@Column(name = "phone")
 	private String phoneNumber;
 	
+	@Column(name = "city")
+	private String city;
+	
+	@Column(name = "gender")
+	private String gender;
 	
 //	@OneToMany(mappedBy = "client")
 //	private List<InsurancePolicy> insurancePolicies;
