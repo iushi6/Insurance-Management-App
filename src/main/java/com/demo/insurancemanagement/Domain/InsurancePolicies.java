@@ -5,7 +5,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "policies",schema = "insuranceSystem")
-public class InsurancePoliciesDomain {
+public class InsurancePolicies {
 
 	
 	

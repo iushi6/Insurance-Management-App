@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "client_user", schema = "insuranceSystem")
-public class ClientDomain {
+public class Client {
 
 	
 	@Id
@@ -40,6 +40,64 @@ public class ClientDomain {
 	
 	@Column(name = "gender")
 	private String gender;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public LocalDate getDateofBirth() {
+		return dateofBirth;
+	}
+
+	public void setDateofBirth(LocalDate dateofBirth) {
+		this.dateofBirth = dateofBirth;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	
+	
 	
 //	@OneToMany(mappedBy = "client")
 //	private List<InsurancePolicy> insurancePolicies;
