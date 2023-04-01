@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 @Entity
 public class Claim {
@@ -79,6 +78,25 @@ public class Claim {
 		this.claimStatus = claimStatus;
 		this.insurancePolicy = insurancePolicy;
 	}
+
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
+
+	public InsurancePolicy getInsurancePolicy() {
+		return insurancePolicy;
+	}
+
+	public void setInsurancePolicy(InsurancePolicy insurancePolicy) {
+		this.insurancePolicy = insurancePolicy;
+	}
+
+	
+
 }
 	
 

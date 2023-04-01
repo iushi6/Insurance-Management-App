@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.insurancemanagement.Domain.InsurancePolicy;
-import com.demo.insurancemanagement.Repository.InsurancePoliciesRepository;
+import com.demo.insurancemanagement.Repository.InsurancePolicyRepository;
 
 @RestController
 @RequestMapping("/api/policies")
 public class InsurancePolicyController {
 
 	@Autowired
-	private InsurancePoliciesRepository insurancePoliciesRepository;
+	private InsurancePolicyRepository insurancePoliciesRepository;
 	
 	@GetMapping
 	public List<InsurancePolicy>getAllPolicies(){

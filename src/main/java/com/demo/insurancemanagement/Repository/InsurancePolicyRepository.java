@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.demo.insurancemanagement.Domain.InsurancePolicy;
 
 @Repository
-public interface InsurancePoliciesRepository extends JpaRepository<InsurancePolicy, Long> {
+public interface InsurancePolicyRepository extends JpaRepository<InsurancePolicy, Long> {
 
 }
