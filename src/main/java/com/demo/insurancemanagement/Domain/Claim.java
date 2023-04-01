@@ -4,37 +4,43 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "claim",schema = "insuranceSystem")
 public class Claim {
 
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	@Column(name ="claimNumber")
-	private Long claimNumber;
+	private Long Id;
 	
-	@Column(name = "description")
+	@Column(nullable =false)
+	private String claimNumber;
+	
+	@Column(nullable =false)
 	private String description;
 	
-	@Column(name = "claimDate")
+	@Column(nullable =false)
 	private LocalDate claimDate;
 	
-	@Column(name="claimStatus")
-	private LocalDate claimStatus;
+	@Column(nullable =false)
+	private Enum<ClaimStatus> claimStatus;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    private InsurancePolicy insurancePolicy;
 
 	
 	//Getter and Setter ---->
-	public Long getClaimNumber() {
+	public String getClaimNumber() {
 		return claimNumber;
 	}
 
-	public void setClaimNumber(Long claimNumber) {
+	public void setClaimNumber(String claimNumber) {
 		this.claimNumber = claimNumber;
 	}
 
@@ -54,13 +60,27 @@ public class Claim {
 		this.claimDate = claimDate;
 	}
 
-	public LocalDate getClaimStatus() {
+	public Enum<ClaimStatus> getClaimStatus() {
 		return claimStatus;
 	}
 
-	public void setClaimStatus(LocalDate claimStatus) {
+	public void setClaimStatus(Enum<ClaimStatus> claimStatus) {
 		this.claimStatus = claimStatus;
 	}
-	
-	
+
+	//Constructors --->
+	public Claim(Long id, String claimNumber, String description, LocalDate claimDate, Enum<ClaimStatus> claimStatus,
+			InsurancePolicy insurancePolicy) {
+		super();
+		Id = id;
+		this.claimNumber = claimNumber;
+		this.description = description;
+		this.claimDate = claimDate;
+		this.claimStatus = claimStatus;
+		this.insurancePolicy = insurancePolicy;
+	}
 }
+	
+
+	
+

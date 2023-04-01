@@ -3,8 +3,10 @@ package com.demo.insurancemanagement.Domain;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,34 +16,28 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "client_user", schema = "insuranceSystem")
 public class Client {
 
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
 	private Long id;
 	
-	@Column(name = "name")
-	private String name;
-	
-	@Column(name = "DOB")
-	private LocalDate dateofBirth;
-	
-	@Column(name = "address")
-	private String address;
-	
-	@Column(name = "phone")
-	private String phoneNumber;
-	
-	@Column(name = "city")
-	private String city;
-	
-	@Column(name = "gender")
-	private String gender;
+	@Column(nullable = false)
+    private String name;
 
-	//Getters and Setters --->
+    @Column(nullable = false)
+    private LocalDate dateOfBirth;
+
+    @Column(nullable = false)
+    private String address;
+
+    @Column(nullable = false)
+    private String contactInformation;
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    private List<InsurancePolicy> insurancePolicies = new ArrayList<>();
+
 	public Long getId() {
 		return id;
 	}
@@ -58,12 +54,12 @@ public class Client {
 		this.name = name;
 	}
 
-	public LocalDate getDateofBirth() {
-		return dateofBirth;
+	public LocalDate getDateOfBirth() {
+		return dateOfBirth;
 	}
 
-	public void setDateofBirth(LocalDate dateofBirth) {
-		this.dateofBirth = dateofBirth;
+	public void setDateOfBirth(LocalDate dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	public String getAddress() {
@@ -74,33 +70,32 @@ public class Client {
 		this.address = address;
 	}
 
-	public String getPhoneNumber() {
-		return phoneNumber;
+	public String getContactInformation() {
+		return contactInformation;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setContactInformation(String contactInformation) {
+		this.contactInformation = contactInformation;
 	}
 
-	public String getCity() {
-		return city;
+	public List<InsurancePolicy> getInsurancePolicies() {
+		return insurancePolicies;
 	}
 
-	public void setCity(String city) {
-		this.city = city;
+	public void setInsurancePolicies(List<InsurancePolicy> insurancePolicies) {
+		this.insurancePolicies = insurancePolicies;
 	}
 
-	public String getGender() {
-		return gender;
+	public Client(Long id, String name, LocalDate dateOfBirth, String address, String contactInformation,
+			List<InsurancePolicy> insurancePolicies) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.dateOfBirth = dateOfBirth;
+		this.address = address;
+		this.contactInformation = contactInformation;
+		this.insurancePolicies = insurancePolicies;
 	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-	
-	
-	
-//	@OneToMany(mappedBy = "client")
-//	private List<InsurancePolicy> insurancePolicies;
+    
 	
 }

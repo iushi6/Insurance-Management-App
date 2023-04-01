@@ -51,11 +51,9 @@ public class ClientController {
 		if(optionalClient.isPresent()) {
 			Client client = optionalClient.get();
 			client.setName(updatedClient.getName());
-			client.setDateofBirth(updatedClient.getDateofBirth());
+			client.setDateOfBirth(updatedClient.getDateOfBirth());
 			client.setAddress(updatedClient.getAddress());
-			client.setCity(updatedClient.getCity());
-			client.setGender(updatedClient.getGender());
-			client.setPhoneNumber(updatedClient.getPhoneNumber());
+			client.setContactInformation(updatedClient.getContactInformation());
 			return ResponseEntity.ok(clientRepository.save(client));
 		}else {
 			return ResponseEntity.notFound().build();

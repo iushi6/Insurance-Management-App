@@ -14,24 +14,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.demo.insurancemanagement.Domain.InsurancePolicies;
+import com.demo.insurancemanagement.Domain.InsurancePolicy;
 import com.demo.insurancemanagement.Repository.InsurancePoliciesRepository;
 
 @RestController
 @RequestMapping("/api/policies")
-public class InsurancePoliciesController {
+public class InsurancePolicyController {
 
 	@Autowired
 	private InsurancePoliciesRepository insurancePoliciesRepository;
 	
 	@GetMapping
-	public List<InsurancePolicies>getAllPolicies(){
+	public List<InsurancePolicy>getAllPolicies(){
 		return insurancePoliciesRepository.findAll();		
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<InsurancePolicies> getInsurancePoliciesById(@PathVariable Long policyId){
-		Optional<InsurancePolicies> oinsurancePolicy = insurancePoliciesRepository.findById(policyId);
+	public ResponseEntity<InsurancePolicy> getInsurancePoliciesById(@PathVariable Long policyId){
+		Optional<InsurancePolicy> oinsurancePolicy = insurancePoliciesRepository.findById(policyId);
 		
 		if(oinsurancePolicy.isPresent()) {
 			return ResponseEntity.ok(oinsurancePolicy.get());
@@ -41,16 +41,16 @@ public class InsurancePoliciesController {
 	}
 	
 	@PostMapping
-	public InsurancePolicies createInsureancePolicies(@RequestBody InsurancePolicies insurancePolicies) {
+	public InsurancePolicy createInsureancePolicies(@RequestBody InsurancePolicy insurancePolicies) {
 		return insurancePoliciesRepository.save(insurancePolicies);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<InsurancePolicies> updateInsurancePolicies(@PathVariable Long policyId, @RequestBody InsurancePolicies updatedPolicy){
-		Optional<InsurancePolicies> optionalPolicy = insurancePoliciesRepository.findById(policyId);
+	public ResponseEntity<InsurancePolicy> updateInsurancePolicies(@PathVariable Long policyId, @RequestBody InsurancePolicy updatedPolicy){
+		Optional<InsurancePolicy> optionalPolicy = insurancePoliciesRepository.findById(policyId);
 		if(optionalPolicy.isPresent()) {
-			InsurancePolicies insurancePolicies = optionalPolicy.get();
-			insurancePolicies.setPolicyType(updatedPolicy.getPolicyType());
+			InsurancePolicy insurancePolicies = optionalPolicy.get();
+			insurancePolicies.setType(updatedPolicy.getType());
 			insurancePolicies.setPremium(updatedPolicy.getPremium());
 			insurancePolicies.setStartDate(updatedPolicy.getStartDate());
 			insurancePolicies.setEndDate(updatedPolicy.getEndDate());
@@ -63,7 +63,7 @@ public class InsurancePoliciesController {
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deleteInsurancePolicy(@PathVariable Long policyId){
-		Optional<InsurancePolicies> optionalPolicy = insurancePoliciesRepository.findById(policyId);
+		Optional<InsurancePolicy> optionalPolicy = insurancePoliciesRepository.findById(policyId);
 		if(optionalPolicy.isPresent()) {
 			insurancePoliciesRepository.deleteById(policyId);
 			return ResponseEntity.noContent().build();
