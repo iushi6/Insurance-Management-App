@@ -96,6 +96,9 @@ public class Client {
 		this.contactInformation = contactInformation;
 		this.insurancePolicies = insurancePolicies;
 	}
+	public Client() {
+		
+	}
     
 	
 }

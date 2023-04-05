@@ -1,4 +1,4 @@
-package com.demo.insurancemanagement.Config;
+//package com.demo.insurancemanagement.Config;
 //package com.demo.insurancemanagement.Security;
 //
 //import org.springframework.beans.factory.annotation.Autowired;
